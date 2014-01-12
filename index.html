@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script type="text/javascript">
+    (function() {
+      var config = {
+        kitId: 'ykp8wyp',
+        scriptTimeout: 3000
+      };
+      var h=document.getElementsByTagName("html")[0];h.className+=" wf-loading";var t=setTimeout(function(){h.className=h.className.replace(/(\s|^)wf-loading(\s|$)/g," ");h.className+=" wf-inactive"},config.scriptTimeout);var tk=document.createElement("script"),d=false;tk.src='//use.typekit.net/'+config.kitId+'.js';tk.type="text/javascript";tk.async="true";tk.onload=tk.onreadystatechange=function(){var a=this.readyState;if(d||a&&a!="complete"&&a!="loaded")return;d=true;clearTimeout(t);try{Typekit.load(config)}catch(b){}};var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(tk,s)
+    })();
+  </script>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Cratchit | Track what you're not spending</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Place favicon.ico and apple-touch-icon(s) in the root directory -->
+	
+	<!--  -->
+  <link rel="stylesheet" href="styles/css/main.css">
+	<!--  -->
+</head>
+<body>
+  
+  <div class="wrap">
+  	
+  	<header class="header" id="header">
+      <div class="inner-content">
+        
+      </div>
+  	</header>
+		
+		<section class="main-content" id="app">
+      
+		</section>
+    <!-- / .main -->
+
+		<footer id="footer" class="footer">
+      <div class="inner-content">
+        
+      </div>			
+		</footer>
+
+ </div>   
+ <!-- / .wrap -->
+ 
+
+  <script id="add" type="text/html">
+      <div class="amount-wrap">
+
+          <label  for="amountInput" 
+                  class="label--hidden">Saving</label>
+
+          <input  id="amountInput"
+                  type="text" 
+                  placeholder="£0.00" 
+                  inputmode= "numeric"
+                  autocomplete="off"
+                  name="inputName" 
+                  class="input--txt"
+                  data-a-sep="" data-a-sign="£" data-v-min="0.01" data-a-form="false">
+          <!-- / .input -->
+          <p id="warning" class="msg--warning" hidden role="alert">Please enter an amount.</p>
+
+      </div>
+      <!-- / .amount-wrap -->
+
+      <button class="btn btn--primary" type="submit">
+        ＋
+        <span class="visually-hidden">Add saving</span>
+      </button>
+
+      
+  </script>
+  <script id="stats" type="text/html">
+    <ul class="saving-history list--block">
+      <li class="saving-period current list--block__item">
+        
+        <span class="saving-period__label">Today</span>
+        <span class="saving-period__value">£<%= dateRange(collection, 1) %></span>
+
+      </li>
+
+      <li class="saving-period list--block__item">
+        
+        <span class="saving-period__label">Last 7 days</span>
+        <span class="saving-period__value">£<%= dateRange(collection, 7) %></span>
+
+      </li>
+
+      <li class="saving-period list--block__item">
+        
+        <span class="saving-period__label">Last 30 days</span>
+        <span class="saving-period__value">£<%= dateRange(collection, 30) %></span>
+
+      </li>
+
+      <li class="saving-period list--block__item">
+        
+        <span class="saving-period__label">All time</span>
+        <span class="saving-period__value">£<%= total(collection) %></span>
+
+      </li>
+    </ul>
+
+    
+
+    <a href="/" class="btn btn--primary addItem">
+      ＋
+      <span class="visually-hidden">Add saving</span>
+    </a>
+  </script>
+	
+	<!--  -->
+  <script src="javascript/lib/jquery.min.js"></script>
+  <script src="javascript/lib/underscore.min.js"></script>  
+  <script src="javascript/lib/backbone.min.js"></script>
+  <script src="javascript/lib/backbone.localstorage.min.js"></script>
+  <script src="javascript/lib/handlebars.min.js"></script>
+  <script src="javascript/lib/moment.min.js"></script>
+  <script src="javascript/lib/autonumeric.js"></script>
+  <script src="javascript/models/saving.js"></script>
+  <script src="javascript/collections/savings.js"></script>
+  <script src="javascript/views/stats.js"></script>
+  <script src="javascript/views/add.js"></script>
+  <script src="javascript/routers/router.js"></script>
+  <script src="javascript/app.js"></script>
+	<!--  -->
+
+</body>
+</html>
