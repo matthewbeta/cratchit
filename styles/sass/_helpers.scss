@@ -1,0 +1,306 @@
+/*  =============================================
+
+	$   HELPERS
+	---------------------------------------------
+	*   A COLLECTION OF USEFUL FUNCTIONS AND MIXINS 
+	*	THAT I MADE OR FOUND
+	*	I HOPE I CREDITED EVERYBODY BUT IF I DIDN'T, SORRY 
+	*	@MATTHEWBETA
+
+	==============================================  */
+
+/*  =============================================
+
+	$   VISUALLY HIDE ELEMENTS
+	---------------------------------------------
+	*  ACCESSIBLY HIDE ELEMENTS
+
+	==============================================  */
+
+	//HT http://html5boilerplate.com/
+
+	%vis-hid {
+		border: 0; 
+		clip: rect(0 0 0 0); 
+		height: 1px; 
+		margin: -1px; 
+		overflow: hidden; 
+		padding: 0; 
+		position: absolute; 
+		width: 1px; 
+	}
+
+	%focusable {
+
+	  clip: auto;
+	  height: auto;
+	  margin: 0;
+	  overflow: visible;
+	  position: static;
+	  width: auto;
+
+	}
+
+// 	USAGE = @include vis-hid & focusable (SEE HELPER CLASSES SECTION)
+
+
+/*  =============================================
+
+	$ 	MICRO CLEAR FIX
+	---------------------------------------------
+	* 	@necolas
+	* 	http://nicolasgallagher.com/micro-clearfix-hack/
+
+	==============================================  */
+
+/*
+	 * For modern browsers
+
+	 * 1. The space content is one way to avoid an Opera bug when the contenteditable attribute is included anywhere else in the document.
+
+	 *    Otherwise it causes space to appear at the top and bottom of elements that are clearfixed.
+
+	 * 2. The use of `table` rather than `block` is only necessary if using `:before` to contain the top-margins of child elements.
+
+ */
+
+	// PLACEHOLDER VERSION
+	// --------------------------------------------------------
+	// @JONIC
+	// http://nicolasgallagher.com/micro-clearfix-hack/#comment-62479
+
+
+	%clr {
+	    &:before,
+	    &:after {
+	        content: " ";
+	        display: table;
+	    }
+	    &:after {
+	        clear: both;
+	    }
+	}
+
+	// USAGE
+
+	/* 
+	.my-wrapper {
+		 @extend %clearfix-micro;
+	}
+
+	*/
+
+/*  =============================================
+
+	$ 	CLEAR UNITS
+	---------------------------------------------
+	* 	CLEAR UNITS FROM VALUES
+	*	@nex3
+	*	https://github.com/nex3/sass/issues/533 
+
+	==============================================  */
+
+	@function clear-units($value){
+
+	@if type-of($value) == "number" {
+		@if (unitless($value)) {
+			@return $value;
+		} @else if unit($value) == "em"{
+			@return $value / 1em;
+		}@else if unit($value) == "px" {
+			@return $value / 1px;
+		}@else if unit($value) == "pt" {
+			@return $value / 1pt;
+		}
+		} @else {
+			@warn "Not a number value: #{$value}";
+			@return $value;
+		}
+	}
+
+	// USAGE
+
+	/* $pixel: clear-units($pixel); */ 
+
+/*  =============================================
+
+	$ 	PX 2 EMS
+	---------------------------------------------
+	* 	Turn numbers with units into unitless numbers
+	*	@nex3
+	*	https://github.com/nex3/sass/issues/533 
+
+	==============================================  */
+
+	/* Easy little function to do the math of pixel to EM conversion for us. Needs a base-font-size set in _typo.scss */
+
+	@function px2em( $pixel, $base-size:$base-font-size ) {
+	
+		/* Remove units for easier math. We are converting to EMs anyway */
+
+		$pixel: clear-units($pixel); 
+		
+		$base-size: clear-units($base-size); 
+		
+		@return #{$pixel / $base-size}em;
+}
+	
+	// USAGE 
+
+	/* 
+		css-property: px2em(100)
+	*/
+
+/*  =============================================
+
+	$ 	MEDIA QUERIES MIXIN
+	---------------------------------------------
+	* 	EASILY ADD MEDIA QUERIES 
+	* 	http://css-tricks.com/naming-media-queries
+	* 	@chriscoyier
+
+	==============================================  */
+
+	@mixin mq($bp) {
+
+		@if $bp == s {
+			@media only screen and (min-width: px2em($bp-s)) { 		
+				@content; 
+				}
+		}
+		@else if $bp == m {
+			@media only screen and (min-width: px2em($bp-m)) { 		
+				@content; 
+			}
+		}
+		@else if $bp == w {
+			@media only screen and (min-width: px2em($bp-w)) { 		
+				@content; 
+			}
+		}
+		@else if $bp == xw {
+			@media only screen and (min-width: px2em($bp-xw)) { 	
+				@content; 
+			}
+		}
+
+	}
+
+	// USAGE 
+
+	/* 
+		.my-rule {
+			// small screen styles here...
+
+			@include mq(w) {
+				// wide screen styles here...
+			}
+
+		}
+
+	*/
+
+/*  =============================================
+
+	$ 	GRID CALCULATOR
+	---------------------------------------------
+	* 	FOR CALCULATING EQUAL COLUMN SIZES
+	* 	@MATTHEWBETA
+	*	REQUIRES $grid-gutter VAR (no %) SET IN _BASE.SCSS
+
+	==============================================  */
+
+	@mixin cols($size, $number) {
+		
+		@if type-of($number) == number {
+
+			// removes % 
+			$gutter: $grid-gutter / ($grid-gutter * 0 + 1); 
+
+	  		width: 100% / ($size / $number) - $gutter ;
+
+		} @else {
+
+			@warn "Not a number value: #{$number}";
+		}
+	}
+
+	// USAGE
+
+	/* 
+		.one-twelth {
+			@include cols(1, 12);
+		}
+
+	*/
+
+	// OFFSET - PUSHES COL TO RIGHT BY COL WIDTH(S)
+	@mixin offset($size, $number) {
+
+		@if type-of($number) == number {
+
+			// removes % 
+			$gutter: $grid-gutter / ($grid-gutter * 0 + 1); 
+
+	 		margin-left: 100% / ($size / $number) + $gutter ;
+
+		} @else {
+
+			@warn "Not a number value: #{$number}";
+		}
+	}
+
+
+	// USAGE
+
+	/* 
+		.push-one-twelth {
+			@include offset(1, 12);
+		}
+
+	*/
+
+
+
+
+/*  =============================================
+
+	$ 	HELPER AND SHAME CLASSES
+	---------------------------------------------
+	* 	EASILY FLOAT WITH MARKUP
+	*	VISUALLY HIDE
+	*	REGULAR HIDE
+	*	MAKE INVISIBLE
+
+	==============================================  */
+
+	.fr {
+		float: right;
+	}
+	.fl {
+		float: left;
+	}
+
+	.invisible {
+		visibility: hidden;
+	}
+
+	.hidden {
+		display: none;
+	}
+
+	.visually-hidden {
+		@extend %vis-hid;
+	} 
+
+	.visually-hidden.focusable {
+
+		&:active,
+		&:focus {
+			@extend %focusable;
+		}
+	} 
+
+	.clr {
+		@extend %clr;
+	}

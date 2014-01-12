@@ -1,0 +1,30 @@
+.saving-history {
+	flex: 1;
+}
+.saving-period {
+	@extend %clr;
+	padding: 1em;
+	margin-bottom: 1px;
+	background: $color-tertiary;
+	// background: url(../../test-bg-2.svg) 0 0 no-repeat $color-tertiary;
+	// 	background-size: cover;
+	color: $color-primary;
+	&.current {
+		color: #FFF;
+		// background: url(../../test-bg.svg) 0 0 no-repeat $color-tertiary;
+		// background-size: cover;
+	}
+}
+
+.saving-period__label {
+	max-width: 50%;
+	line-height: 2.5;
+	.current & {
+		font-size: 1.5em;
+		line-height: 1.5
+	}
+}
+.saving-period__value {
+	float: right;
+	font-size: 1.5em;
+}

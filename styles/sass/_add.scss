@@ -1,0 +1,60 @@
+.btn {
+	@include btn();
+}
+
+.btn--primary {
+	background-color: $color-primary;
+	color: #FFF;
+	font-size: 2em; 
+	transition: all .6s ease-out;
+	&:hover, &:focus {
+		background-color: $color-primary-highlight;
+		outline: 0 none;
+		transition: all .3s ease-out;
+	}
+	&:active {
+		background-color: $color-primary-on;
+		outline: 0 none;
+		transition: all .3s ease-out;
+	}
+}
+
+.add-form {
+	text-align: center;
+}
+.amount-wrap {
+	flex: 1;
+	padding: 0;
+	margin-bottom: 3em;
+}
+.label--hidden {
+	@extend %vis-hid;
+}
+.input--txt {
+	width: 100%;
+	padding: 2em 0;
+	border: 0 none;
+	background-color: $color-primary; //darken($color-bg, 20);
+	// box-shadow: inset 0 2px 2px rgba(0,0,0,.2);
+
+	font-family: "ff-netto-web";
+	font-size: 2em;
+	color: #FFF;
+	text-align: center;
+
+	&:focus {
+		outline: 0 none;
+	}
+
+}
+
+::placeholder {
+	color: #FFF;
+	:focus & {
+		color: red;
+	}
+}
+
+.msg--warning {
+	padding: 1em 0;
+}

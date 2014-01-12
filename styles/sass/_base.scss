@@ -1,0 +1,54 @@
+/* ============================= *\
+
+	# VARS
+
+\* ============================= */
+
+$color-bg 			: #3DE7C7;
+$color-text 		: #F0FAF6;
+
+$color-primary 	: #3bf5d8;
+$color-primary-highlight 	: lighten($color-primary, 10%);
+$color-primary-on 	: lighten($color-primary, 20%);
+
+$color-tertiary : #3DCEBC;
+$color-highlight: #DDD;
+$color-danger 	: #DDD;
+$color-confirm 	: #DDD;
+
+$body-container : ".wrap";
+$footer-container : ".footer";
+$footer-height: 4em;
+
+$max-width 			: 35em;
+
+/* ============================= *\
+
+	# MIXINS
+
+\* ============================= */
+
+
+@mixin btn {
+	// width: 2em;
+	// height: 2em;
+	display: block;
+	width: 100%;
+	padding: 1em 0;
+  border: 0 none;
+
+	background-color: $color-primary;
+  // border-radius: 100%;
+  
+  text-align: center;
+  line-height: 1;
+  font-family: "ff-netto-web", sans-serif;
+  font-weight: normal;
+  text-decoration: none;
+
+  cursor: pointer;
+
+}
+
+
+

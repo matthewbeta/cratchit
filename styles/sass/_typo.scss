@@ -1,0 +1,28 @@
+@import url(http://fonts.googleapis.com/css?family=Quando);
+
+body {
+	font: 400 1.2em/1.5 "ff-netto-web", sans-serif;
+	color: $color-text;
+	hyphens: auto;
+	hyphenate-before: 3;
+	hyphenate-after: 3;
+	hyphenate-lines: 3;
+	font-feature-settings: "liga", "dlig";
+}
+
+h1 {
+	font-size: 2.25em;
+	line-height: 1;
+	padding-bottom: .5em;
+	text-align: center;
+}
+h2,
+h3 {
+	font-size: 1.5em;
+	line-height: 1;
+	padding-bottom: .75em;
+}
+p {
+	padding-bottom: 1em;
+	word-break: break-all;
+}
