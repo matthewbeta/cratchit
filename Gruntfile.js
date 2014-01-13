@@ -50,11 +50,50 @@ module.exports = function(grunt) {
       }
     },
 
+    useminPrepare: {
+      html: 'build/index.html',
+      options: {
+        dest: 'build'
+      }
+    },
+
+    usemin: {
+      html: 'build/index.html',
+      options: {
+        dirs: ['build']
+      }
+    },
+
+    copy: {
+      build: {
+        files: [
+          {expand: true, src: ['index.html'], dest: 'build', filter: 'isFile'},
+          {expand: true, src: ['cratchit.mf'], dest: 'build', filter: 'isFile'},
+          {expand: true, src: ['styles/css/*.css'], dest: 'build', filter: 'isFile'},
+          {expand: true, src: ['javascript/**/*.js'], dest: 'build', filter: 'isFile'},
+          {expand: true, src: ['fonts/*'], dest: 'build', filter: 'isFile'},
+        ]
+      }
+    },
+
     connect: {
       server: {
         options: {
+          hostname: '*',
           port: 1234
         }
+      }
+    },
+
+    'ftp-deploy': {
+      build: {
+        auth: {
+          host: 'thisisbeta.co.uk',
+          port: 21,
+          authKey: 'cratchit'
+        },
+        src: 'build',
+        dest: 'thisisbeta.co.uk/cratchitapp',
       }
     },
     
@@ -72,6 +111,20 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-autoprefixer');
   grunt.loadNpmTasks('grunt-ftp-deploy');
+
+  // BUILD task
+  grunt.registerTask('build', [
+    'copy',
+    'useminPrepare',
+    'usemin',
+    'concat',
+    'uglify',
+    'cssmin'
+  ]);
+
+  // DEPLOY task
+    grunt.registerTask('deploy', ['ftp-deploy']);
+
 
   // Default task.
   grunt.registerTask('default', [

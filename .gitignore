@@ -2,11 +2,5 @@ styles/css
 node_modules
 .sass-cache
 javascript/npm-debug.log
-
-javascript/npm-debug.log
-
-npm-debug.log
-
-npm-debug.log
-
-npm-debug.log
+.ftppass
+build
