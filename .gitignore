@@ -4,3 +4,4 @@ node_modules
 javascript/npm-debug.log
 .ftppass
 build
+.tmp
