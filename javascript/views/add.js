@@ -10,6 +10,7 @@ var AddView = Backbone.View.extend({
 
 	initialize: function() {
 
+		
 	},
 
 	render: function() {
@@ -40,6 +41,16 @@ var AddView = Backbone.View.extend({
 			});
 		} else {
 			$("#warning").removeAttr("hidden");
+			$("button").addClass("wobble").on(
+				"webkitAnimationEnd oanimationend msAnimationEnd animationend",
+				function() {
+					$(this).removeClass("wobble");
+				});
+			$("#warning").removeAttr("hidden").addClass("pulse").on(
+				"webkitAnimationEnd oanimationend msAnimationEnd animationend",
+				function() {
+					$(this).removeClass("pulse").attr("hidden", "hidden");
+				});
 		}
 	}
 
