@@ -3,24 +3,29 @@
 <head>
   <meta charset="utf-8">
   <script type="text/javascript">
-    (function() {
-      var config = {
-        kitId: 'ykp8wyp',
-        scriptTimeout: 3000
-      };
-      var h=document.getElementsByTagName("html")[0];h.className+=" wf-loading";var t=setTimeout(function(){h.className=h.className.replace(/(\s|^)wf-loading(\s|$)/g," ");h.className+=" wf-inactive"},config.scriptTimeout);var tk=document.createElement("script"),d=false;tk.src='//use.typekit.net/'+config.kitId+'.js';tk.type="text/javascript";tk.async="true";tk.onload=tk.onreadystatechange=function(){var a=this.readyState;if(d||a&&a!="complete"&&a!="loaded")return;d=true;clearTimeout(t);try{Typekit.load(config)}catch(b){}};var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(tk,s)
-    })();
+  (function() {
+    var config = {
+      kitId: 'ykp8wyp',
+      scriptTimeout: 3000
+    };
+    var h=document.getElementsByTagName("html")[0];h.className+=" wf-loading";var t=setTimeout(function(){h.className=h.className.replace(/(\s|^)wf-loading(\s|$)/g," ");h.className+=" wf-inactive"},config.scriptTimeout);var tk=document.createElement("script"),d=false;tk.src='//use.typekit.net/'+config.kitId+'.js';tk.type="text/javascript";tk.async="true";tk.onload=tk.onreadystatechange=function(){var a=this.readyState;if(d||a&&a!="complete"&&a!="loaded")return;d=true;clearTimeout(t);try{Typekit.load(config)}catch(b){}};var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(tk,s)
+  })();
   </script>
+  <script type="text/javascript" src="//use.typekit.net/ykp8wyp.js"></script>
+  <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Cratchit | Track what you're not spending</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="format-detection" content="telephone=no">
 
   <!-- Place favicon.ico and apple-touch-icon(s) in the root directory -->
 	
-	<!--  -->
+	<!-- build:css css/main.min.css -->
   <link rel="stylesheet" href="styles/css/main.css">
-	<!--  -->
+	<!-- endbuild -->
 </head>
 <body>
   
@@ -53,14 +58,14 @@
           <label  for="amountInput" 
                   class="label--hidden">Saving</label>
 
-          <input  id="amountInput"
+          <input  id="amountInput" 
                   type="text" 
                   placeholder="£0.00" 
-                  inputmode= "numeric"
-                  autocomplete="off"
+                  inputmode="numeric"  
+                  autocomplete="off" 
                   name="inputName" 
                   class="input--txt"
-                  data-a-sep="" data-a-sign="£" data-v-min="0.01" data-a-form="false">
+                  data-a-sep="" data-a-sign="£" data-v-min="0" data-a-form="false" data-w-empty="sign">
           <!-- / .input -->
           <p id="warning" class="msg--warning" hidden role="alert">Please enter an amount.</p>
 
@@ -113,13 +118,11 @@
     </a>
   </script>
 	
-	<!--  -->
+	<!-- build:js javascript/main.min.js -->
   <script src="javascript/lib/jquery.min.js"></script>
   <script src="javascript/lib/underscore.min.js"></script>  
   <script src="javascript/lib/backbone.min.js"></script>
   <script src="javascript/lib/backbone.localstorage.min.js"></script>
-  <script src="javascript/lib/handlebars.min.js"></script>
-  <script src="javascript/lib/moment.min.js"></script>
   <script src="javascript/lib/autonumeric.js"></script>
   <script src="javascript/models/saving.js"></script>
   <script src="javascript/collections/savings.js"></script>
@@ -127,7 +130,7 @@
   <script src="javascript/views/add.js"></script>
   <script src="javascript/routers/router.js"></script>
   <script src="javascript/app.js"></script>
-	<!--  -->
+	<!-- endbuild -->
 
 </body>
 </html>
