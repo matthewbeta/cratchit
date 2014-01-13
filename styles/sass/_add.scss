@@ -35,13 +35,6 @@
 	padding: 2em 0;
 	border: 0 none;
 	background-color: $color-primary; //darken($color-bg, 20);
-	// box-shadow: inset 0 2px 2px rgba(0,0,0,.2);
-
-	font-family: "ff-netto-web";
-	font-size: 2em;
-	color: #FFF;
-	text-align: center;
-
 	&:focus {
 		outline: 0 none;
 	}
