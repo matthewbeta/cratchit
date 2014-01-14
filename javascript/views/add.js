@@ -38,7 +38,7 @@ var AddView = Backbone.View.extend({
 					}
 			});
 		} else {
-			$("button").addClass("wobble").on(
+			$("#amountInput").addClass("wobble").on(
 				"webkitAnimationEnd oanimationend msAnimationEnd animationend",
 				function() {
 					$(this).removeClass("wobble");
