@@ -1,8 +1,12 @@
 CACHE MANIFEST
-# 2013-01-13 v0.1.0
+# 2013-01-14 v0.1.3
 
 CACHE:
 index.html
+
+# FONTS
+fonts/miso-light-webfont.ttf
+fonts/miso-light-webfont.woff
 
 # Styles
 css/main.min.css
@@ -12,3 +16,8 @@ javascript/main.min.js
 
 NETWORK:
 *
+
+# backup fonts will be displayed if the user is offline
+FALLBACK
+/ /fonts/miso-light-webfont.ttf
+/ /fonts/miso-light-webfont.woff
