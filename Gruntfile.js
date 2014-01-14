@@ -79,6 +79,7 @@ module.exports = function(grunt) {
     connect: {
       server: {
         options: {
+          // base: 'build',
           hostname: '*',
           port: 1234
         }
@@ -88,12 +89,12 @@ module.exports = function(grunt) {
     'ftp-deploy': {
       build: {
         auth: {
-          host: 'thisisbeta.co.uk',
+          host: 'ftp.thisisbeta.co.uk',
           port: 21,
           authKey: 'cratchit'
         },
         src: 'build',
-        dest: 'thisisbeta.co.uk/cratchitapp',
+        dest: 'cratchit.thisisbeta.co.uk',
       }
     },
     
@@ -124,7 +125,6 @@ module.exports = function(grunt) {
 
   // DEPLOY task
     grunt.registerTask('deploy', ['ftp-deploy']);
-
 
   // Default task.
   grunt.registerTask('default', [
