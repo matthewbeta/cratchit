@@ -59,11 +59,11 @@
           <input  id="amountInput" 
                   type="text" 
                   placeholder="£0.00" 
-                  inputmode="numeric"  
+                  inputmode="numeric" 
+                  pattern="[0-9]*"  
                   autocomplete="off" 
                   name="inputName" 
-                  class="input--txt"
-                  data-a-sep="" data-a-sign="£" data-v-min="0" data-a-form="false" data-w-empty="sign">
+                  class="input--txt">
           <!-- / .input -->
           <p id="warning" class="msg--warning" hidden role="alert">Please enter an amount.</p>
 
@@ -121,7 +121,8 @@
   <script src="javascript/lib/underscore.min.js"></script>  
   <script src="javascript/lib/backbone.min.js"></script>
   <script src="javascript/lib/backbone.localstorage.min.js"></script>
-  <script src="javascript/lib/autonumeric.js"></script>
+  <!--<script src="javascript/lib/autonumeric.js"></script>-->
+  <script src="javascript/lib/jquery.maskMoney.js"></script>
   <script src="javascript/models/saving.js"></script>
   <script src="javascript/collections/savings.js"></script>
   <script src="javascript/views/stats.js"></script>

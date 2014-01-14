@@ -22,8 +22,8 @@ var AddView = Backbone.View.extend({
 	save: function(e) {
 		e.preventDefault();
 
-		var saving = $("#amountInput").autoNumeric("get");
-
+		var saving = $("#amountInput").maskMoney('unmasked')[0];
+		
 		if (saving !== "" && saving !== "0") {
 			this.collection.add(this.model);
 			this.model.save({

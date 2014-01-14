@@ -29,7 +29,8 @@ var Router = Backbone.Router.extend({
 				collection: this.collection
 			});
 			this._renderView(view);
-			$("#amountInput").autoNumeric( "init", {aSep: '', aSign: '£', vMin: '0', wEmpty: 'sign', lZero: 'allow'} );
+			$("#amountInput").maskMoney({prefix:'£', allowNegative: false, thousands:'', decimal:'.', affixesStay: true});
+			//.autoNumeric( "init", {aSep: '', aSign: '£', vMin: '0', wEmpty: 'sign', lZero: 'allow'} );
 
 		},
 
