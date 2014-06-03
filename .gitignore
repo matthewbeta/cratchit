@@ -1,7 +1,2 @@
-styles/css
-node_modules
-.sass-cache
-javascript/npm-debug.log
-.ftppass
-build
-.tmp
+cratchit.iconsproj
+*.pxm
